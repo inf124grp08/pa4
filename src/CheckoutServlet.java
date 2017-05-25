@@ -71,7 +71,8 @@ public class CheckoutServlet extends HttpServlet {
     HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) sesh.getAttribute("cart");
 
     if (dh.submitOrder(cart, form)) {
-      request.getSession(true).removeAttribute("cart");
+      request.setAttribute("lastCart", cart);
+      sesh.removeAttribute("cart");
       request.setAttribute("form", form);
 
       ArrayList<Integer> ids = new ArrayList<Integer>(cart.keySet());

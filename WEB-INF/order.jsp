@@ -37,20 +37,18 @@
               $${p.price}
             </td>
             <td class="cat-table-qty">
-              ${cart[p.id]}
+              ${lastCart[p.id]}
             </td>
           </tr>
         </c:forEach>
         </tbody>
       </table>
       <div id="order-form">
-        <h4> First Name: ${form.firstname}</h4>
-        <h4> Last Name: ${form.lastname} </h4>
-        <h4> Phone Number: ${form.phone}</h4>
-        <h4>${form.address}</h4>
+        <h4>First Name: ${form.firstname}</h4>
+        <h4>Last Name: ${form.lastname} </h4>
+        <h4>Phone Number: ${form.phone}</h4>
+        <h4>Address: ${form.address}</h4>
         <h4>Shipping Method: ${form.shipping}</h4>
-        <h4>Creditcard Number: ${creditcard}</h4>
-        <h4>Expiration Date: ${expiry}</h4>
         <h4>Total: $<span id="total">${totalPrice}</span></h4>
       </div>
     </div>
