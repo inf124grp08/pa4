@@ -1,6 +1,20 @@
 # pa3
 
-Assignment
+URL: http://andromeda-16.ics.uci.edu:8085/app/home
+
+General layout: Organized by category. Clicking category takes you to product listing for that category. Clicking the product itself takes you to the product detail page, which has the "add to cart" button. Setting a quantity, and clicking the button will add to your cart. Notice the numnber in the top right corner.
+
+If you click the cart link at the top right corner, you will be taken to a page in which you can see the contents of your cart and submit the order form. Upon submission, you will be forwarded to a receipt page showing you your order details.
+
+In addition, the last 5 products you have viewed are visible on the home page.
+
+Group memebrs:
+Keyvan Fatehi
+Kyle San Clemente
+
+Lastly, the github for this assignment is here: https://github.com/inf124grp08/pa3
+
+## Requirements
 
 1. Include the output of two servlets to create the homepage for your e-commerce site: the first servlet should handle the displaying of the list of products obtained from a backend database, and the second servlet should use session tracking to display the last 5 products that the user has visited (viewed the product details page). In case this number is less than 5, show whatever amount of information you have stored in the session. Use servlet "include" feature to implement this requirement. 
 
@@ -28,7 +42,3 @@ We will grade both the HTML pages available from your web server and the files y
 Make sure your web server is running and available for the grader to check your website. Failure to access your website will result in grade deduction.
 
 You are not allowed to work with anyone outside of your group to complete this assignment. Please be informed that we will be using automated tools to catch potential cases of plagiarism in this class.  
-
-## notes/links
-
-http://www.javawebtutor.com/articles/servlets/servlet_db_example.php
