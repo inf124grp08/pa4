@@ -17,11 +17,10 @@ public class ProductServlet extends HttpServlet {
             throws ServletException, IOException
   {
     DataHelper dh = new DataHelper(response.getWriter());
-    HashMap<String,Category> categories = dh.getCategories();
     int id = Integer.parseInt(request.getParameter("id"));
     Product product = dh.getProduct(id);
     request.setAttribute("product", product);
-    request.setAttribute("categories", categories.values());
+    request.getRequestDispatcher("/navbar").include(request, response);
     // Create recently visted cookie
     // Read in the recently visited cookie list
     HttpSession sesh = request.getSession(true);

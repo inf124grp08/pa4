@@ -11,17 +11,12 @@ import app.*;
 @SuppressWarnings("serial")
 public class HomeServlet extends HttpServlet {
 
-  private String message;
-
   public void doGet(HttpServletRequest request,
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-    DataHelper dh = new DataHelper(response.getWriter());
-    HashMap<String,Category> categories = dh.getCategories();
-    request.setAttribute("categories", categories.values());
+    request.getRequestDispatcher("/navbar").include(request, response);
     request.getRequestDispatcher("/visited").include(request, response);
-
     request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
   }
 }

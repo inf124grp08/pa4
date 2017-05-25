@@ -12,5 +12,9 @@
       <a href="${context}/category?name=${cat.name}">${cat.label}</a>
       </li>
     </c:forEach>
+      
+    <li>
+    <a href="${context}/checkout">Cart: ${cartCount}</a>
+    </li>
   </ul>
 </div>

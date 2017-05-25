@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
@@ -7,16 +8,28 @@ import javax.servlet.annotation.WebServlet;
 @SuppressWarnings("serial")
 public class CartServlet extends HttpServlet {
  
-  public void service(HttpServletRequest request, HttpServletResponse response)
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException
   {
-    String id = request.getParameter("id");
-    String qty = request.getParameter("qty");
-    
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    Cookie cookie = new Cookie(id, qty);                                
-    response.addCookie(cookie);                                                        
-    response.sendRedirect("WEB_INF/home.jsp"); 
+    Integer id = Integer.parseInt(request.getParameter("id"));
+    Integer qty = Integer.parseInt(request.getParameter("qty"));
+    HttpSession sesh = request.getSession(true);
+    HashMap<Integer, Integer> cart; 
+    if(sesh.getAttribute("cart") != null){
+      cart = (HashMap<Integer, Integer>) sesh.getAttribute("cart");
+    }
+    else {
+      cart = new HashMap<Integer, Integer>();
+    }
+
+    if (cart.containsKey(id)){ 
+      cart.put(id, cart.get(id)+qty);
+    } else {
+      cart.put(id, qty);
+    }
+
+    sesh.setAttribute("cart", cart);
+
+    response.sendRedirect(request.getHeader("referer"));
   }
 }

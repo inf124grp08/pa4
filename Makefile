@@ -4,6 +4,7 @@ build: clean
 	javac -d WEB-INF/classes/ src/Database.java
 	javac -d WEB-INF/classes/ src/DataHelper.java
 	javac -d WEB-INF/classes/ src/*Servlet.java
+	make restart
 
 restart:
 	-tstop

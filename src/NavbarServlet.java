@@ -2,29 +2,37 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
-import java.util.*;
 import java.sql.*;
+import java.util.*;
 
 import app.*;
 
-@WebServlet("/category")
+@WebServlet("/navbar")
 @SuppressWarnings("serial")
-public class CategoryServlet extends HttpServlet {
-
-  private String message;
+public class NavbarServlet extends HttpServlet {
 
   public void doGet(HttpServletRequest request,
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-    String name = request.getParameter("name");
     DataHelper dh = new DataHelper(response.getWriter());
     HashMap<String,Category> categories = dh.getCategories();
-    ArrayList<Product> products = dh.getProducts(name);
-    request.setAttribute("products", products);
     request.setAttribute("categories", categories.values());
-    request.setAttribute("category", categories.get(name));
-    request.getRequestDispatcher("/navbar").include(request, response);
-    request.getRequestDispatcher("/WEB-INF/category.jsp").forward(request, response);
+    HttpSession sesh = request.getSession(true);
+    HashMap<Integer, Integer> cart; 
+    if(sesh.getAttribute("cart") != null){
+      cart = (HashMap<Integer, Integer>) sesh.getAttribute("cart");
+    }
+    else {
+      cart = new HashMap<Integer, Integer>();
+    }
+
+
+    int cartCount = 0;
+    for (int qty : cart.values()) {
+      cartCount += qty;
+    }
+
+    request.setAttribute("cartCount", cartCount);
   }
 }
