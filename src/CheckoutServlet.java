@@ -37,7 +37,7 @@ public class CheckoutServlet extends HttpServlet {
       totalPrice += qty * Double.parseDouble(product.getPrice());
     }
 
-    request.setAttribute("totalPrice", totalPrice);
+    request.setAttribute("totalPrice", Math.round(totalPrice*100)/100.0);
     request.getRequestDispatcher("/navbar").include(request, response);
     request.getRequestDispatcher("/WEB-INF/checkout.jsp").forward(request, response);
   }
@@ -86,7 +86,7 @@ public class CheckoutServlet extends HttpServlet {
         totalPrice += qty * Double.parseDouble(product.getPrice());
       }
 
-      request.setAttribute("totalPrice", totalPrice);
+      request.setAttribute("totalPrice", Math.round(totalPrice*100)/100.0);
       request.getRequestDispatcher("/WEB-INF/order.jsp").forward(request, response);
     } else {
       dh.log("There was an error processing your order due to very high volumes!");

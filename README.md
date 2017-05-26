@@ -1,6 +1,6 @@
 # pa3
 
-URL: http://andromeda-16.ics.uci.edu:8085/app/home
+URL: http://andromeda-16.ics.uci.edu:5016/app/home
 
 General layout: Organized by category. Clicking category takes you to product listing for that category. Clicking the product itself takes you to the product detail page, which has the "add to cart" button. Setting a quantity, and clicking the button will add to your cart. Notice the numnber in the top right corner.
 
