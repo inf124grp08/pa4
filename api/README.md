@@ -16,15 +16,36 @@ Lastly, the github for this assignment is here: https://github.com/inf124grp08/p
 
 ## Requirements
 
-1. Include the output of two servlets to create the homepage for your e-commerce site: the first servlet should handle the displaying of the list of products obtained from a backend database, and the second servlet should use session tracking to display the last 5 products that the user has visited (viewed the product details page). In case this number is less than 5, show whatever amount of information you have stored in the session. Use servlet "include" feature to implement this requirement. 
+1. Using JSP reimplement the product list page. This is the page that contains the list of your products. 
 
-2. Using servlets create a "product details" page. This page should take a product identifier as a parameter and show the product details after getting the relevant information from the database. This page should NOT have an order form, only a button to "Add to Cart". Use servlet "session" to store the products in a shopping cart. 
+2. Create REST services to allow for interaction with the order and product resources stored in your application database. You will need to implement services that use the following verbs
 
-3. Using servlets create a "check out" page, which allows the user to place an order. The page should show all the products in the shopping cart and the total price. This page should have a form which will allow the user to do the following:
+     i.   GET
 
-Enter shipping information: name, shipping address, phone number, credit card number, etc.
-Submit the order for storage in the backend database
-On successful submission, forward to the order details page. Use servlet "forward" feature to implement this requirement. 
+     ii.  PUT
+
+     iii. POST
+
+     iv. DELETE
+
+Ensure that the proper REST principles and conventions are followed while creating your REST services. For example: A GET method should be used only for retrieving an existing resource, A POST method should be used for creating a new resource, etc. Do not forget to perform validation for certain methods. For instance, when implementing methods like GET, PUT, & DELETE to interact with existing resources, you will need to verify if the resource being queried actually exists. If the resource is not found. You will need to throw a 404 - Not Found response.
+
+You are required to create your new REST service application in Java. It is mandatory that you use the Jersey REST framework.  For the scope of this assignment, it is sufficient that your REST services communicate in JSON. (You are free to implement support for other media types, but you will have to make sure that your e-commerce web application communicates successfully with the REST service.)
+
+3. You will now need to replace all the database interactions in your web application with REST calls. Your web application will now act as a REST client and retrieve the MySQL data indirectly through the new RESTful web service.
+
+In the readme file, provide proper documentation highlighting the details for each RESTful service method that you implement. Your documentation should include the following at the very least 
+
+     i.    Method Type.
+
+     ii.   Request URL.
+
+     iii.  Sample Response.
+
+     iv.  Sample Request (if applicable)
+
+ 
+
 Grading
 
 This assignment is worth 12 points; 4 points for implementing each of the requirements above.
