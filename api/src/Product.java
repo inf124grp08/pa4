@@ -1,4 +1,4 @@
-package app;
+package api;
 
 public class Product {
   public int id;

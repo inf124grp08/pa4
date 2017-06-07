@@ -1,4 +1,4 @@
-package app;
+package api;
 import java.sql.*;
 
 public class Database {

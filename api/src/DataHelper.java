@@ -1,19 +1,8 @@
-package app;
-import java.io.*;
+package api;
 import java.sql.*;
 import java.util.*;
 
 public class DataHelper {
-  PrintWriter pw;
-
-  public DataHelper(PrintWriter pw) {
-    this.pw = pw;
-  }
-
-  public void log(String text) {
-    this.pw.println(text);
-  }
-
   public HashMap<String,Category> getCategories() {
     HashMap<String,Category> categories = new HashMap<String,Category>();
     try {
@@ -40,13 +29,8 @@ public class DataHelper {
       conn.close();
     }catch(SQLException se){
       //Handle errors for JDBC
-
-      pw.println("JDBC Error");
-      pw.println(se.getMessage());
     }catch(Exception e){
       //Handle errors for Class.forName
-      pw.println("Class.forName Error");
-      pw.println(e.getMessage());
 
     }
 
@@ -86,12 +70,8 @@ public class DataHelper {
     }catch(SQLException se){
       //Handle errors for JDBC
 
-      pw.println("JDBC Error");
-      pw.println(se.getMessage());
     }catch(Exception e){
       //Handle errors for Class.forName
-      pw.println("Class.forName Error");
-      pw.println(e.getMessage());
 
     }
 
@@ -146,12 +126,8 @@ public class DataHelper {
     }catch(SQLException se){
       //Handle errors for JDBC
 
-      pw.println("JDBC Error");
-      pw.println(se.getMessage());
     }catch(Exception e){
       //Handle errors for Class.forName
-      pw.println("Class.forName Error");
-      pw.println(e.getMessage());
     }
 
     return products;
@@ -197,13 +173,10 @@ public class DataHelper {
       return true;
     }catch(SQLException se){
       //Handle errors for JDBC
-
-      pw.println("JDBC Error");
-      pw.println(se.getMessage());
+      se.printStackTrace();
     }catch(Exception e){
       //Handle errors for Class.forName
-      pw.println("Class.forName Error");
-      pw.println(e.getMessage());
+      e.printStackTrace();
     }
 
     return false;
