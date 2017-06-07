@@ -37,8 +37,13 @@
               $${p.price}
             </td>
             <td class="cat-table-qty">
-              ${lastCart[p.id]}
+              <form action="http://andromeda-16.ics.uci.edu:5016/pa4app/v1/api/orders/1/products/${p.id}" method="PUT">
+                <input type="number" value="${lastCart[p.id]}">
+                <input type="submit" value="Update Qty">
+              </form>
             </td>
+            <td>
+          </td>
           </tr>
         </c:forEach>
         </tbody>
@@ -51,6 +56,9 @@
         <h4>Shipping Method: ${form.shipping}</h4>
         <h4>Total: $<span id="total">${totalPrice}</span></h4>
       </div>
+      <form action="http://andromeda-16.ics.uci.edu:5016/pa4app/v1/api/orders/1" method="DELETE">
+        <input type="submit" value="Cancel Order">
+      </form>
     </div>
 	</body>
 </html>
