@@ -16,7 +16,7 @@ public class ProductServlet extends HttpServlet {
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
     int id = Integer.parseInt(request.getParameter("id"));
     Product product = dh.getProduct(id);
     request.setAttribute("product", product);

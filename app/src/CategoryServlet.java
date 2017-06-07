@@ -18,7 +18,7 @@ public class CategoryServlet extends HttpServlet {
             throws ServletException, IOException
   {
     String name = request.getParameter("name");
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
     HashMap<String,Category> categories = dh.getCategories();
     ArrayList<Product> products = dh.getProducts(name);
     request.setAttribute("products", products);

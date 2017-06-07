@@ -11,9 +11,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
-public class DataHelper {
+public class RestHelper {
   private URI getBaseURI() {
-    return UriBuilder.fromUri("andromeda-16.ics.uci.edu:5016/pa4api").build();
+    return UriBuilder.fromUri("http://andromeda-16.ics.uci.edu:5016/pa4api").build();
   }
 
   public HashMap<String,Category> getCategories() {
@@ -64,11 +64,14 @@ public class DataHelper {
   public ArrayList<Product> getProductList(ArrayList<Integer> ids) {
     ClientConfig config = new ClientConfig();
     Client client = ClientBuilder.newClient(config);
-    WebTarget target = client.target(getBaseURI());
-    String jsonResponse = target.
-      path("v1").path("api").path("products").
-      queryParam("ids", ids).
-      request().
+    WebTarget target = client.target(getBaseURI()).
+      path("v1").path("api").path("products");
+
+    for (int id : ids) {
+      target = target.queryParam("ids", Integer.toString(id));
+    }
+
+    String jsonResponse = target.request().
       accept(MediaType.APPLICATION_JSON).
       get(String.class);
 

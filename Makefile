@@ -2,7 +2,7 @@ api:
 	cd api && make build
 
 app:
-	cd api && make build
+	cd app && make build
 
 build: clean
 	make api

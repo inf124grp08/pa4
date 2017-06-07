@@ -23,7 +23,7 @@ public class CheckoutServlet extends HttpServlet {
       cart = new HashMap<Integer, Integer>();
     }
 
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
     ArrayList<Integer> ids = new ArrayList<Integer>(cart.keySet());
     request.setAttribute("cartProducts", dh.getProductList(ids));
     request.setAttribute("cart", cart);
@@ -45,7 +45,7 @@ public class CheckoutServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException
   {
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
 
     HashMap<String, String> form = new HashMap<String,String>();
 
@@ -89,7 +89,6 @@ public class CheckoutServlet extends HttpServlet {
       request.setAttribute("totalPrice", Math.round(totalPrice*100)/100.0);
       request.getRequestDispatcher("/WEB-INF/order.jsp").forward(request, response);
     } else {
-      dh.log("There was an error processing your order due to very high volumes!");
     }
   }
 }

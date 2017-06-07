@@ -15,7 +15,7 @@ public class NavbarServlet extends HttpServlet {
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
     HashMap<String,Category> categories = dh.getCategories();
     request.setAttribute("categories", categories.values());
     HttpSession sesh = request.getSession(true);

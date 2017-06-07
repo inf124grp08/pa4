@@ -17,7 +17,7 @@ public class VisitedServlet extends HttpServlet {
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-    DataHelper dh = new DataHelper(response.getWriter());
+    RestHelper dh = new RestHelper();
 
     HttpSession sess = request.getSession();
     if (sess != null) {
