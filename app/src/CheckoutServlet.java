@@ -89,6 +89,17 @@ public class CheckoutServlet extends HttpServlet {
       request.setAttribute("totalPrice", Math.round(totalPrice*100)/100.0);
       request.getRequestDispatcher("/WEB-INF/order.jsp").forward(request, response);
     } else {
+
+      response.setContentType("text/html");
+      PrintWriter out = response.getWriter();
+
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<title>Error</title>");
+      out.println("</head>");
+      out.println("<body>Error! Sorry! Try again later.<body>");
+      out.println("</body>");
+      out.println("</html>");
     }
   }
 }

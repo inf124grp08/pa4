@@ -1,8 +1,11 @@
 package app;
 import java.util.*;
 import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.ClientResponse;
 import java.net.URI;
 import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -81,6 +84,15 @@ public class RestHelper {
   }
 
   public boolean submitOrder(HashMap<Integer,Integer> cart, HashMap<String, String> form) {
-    return false;
+    ClientConfig config = new ClientConfig();
+    Client client = ClientBuilder.newClient(config);
+    WebTarget target = client.target(getBaseURI()).
+      path("v1").path("api").path("orders");
+
+    String input = "";
+    
+    Response response = target.
+      request("application/json").post(Entity.json(input));
+    return response.getStatus() == 200;
   }
 }
