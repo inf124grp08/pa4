@@ -1,18 +1,18 @@
-# pa3
+# pa4
 
-URL: http://andromeda-16.ics.uci.edu:5016/app/home
+URL: http://andromeda-16.ics.uci.edu:5016/pa4app/home
 
-General layout: Organized by category. Clicking category takes you to product listing for that category. Clicking the product itself takes you to the product detail page, which has the "add to cart" button. Setting a quantity, and clicking the button will add to your cart. Notice the numnber in the top right corner.
+General layout: Organized by category. Clicking category takes you to product listing for that category. Clicking the product itself takes you to the product detail page, which has the "add to cart" button. Setting a quantity, and clicking the button will add to your cart. Notice the numnber in the top right corner. All the products and categories are received through GET requests to the API.
 
-If you click the cart link at the top right corner, you will be taken to a page in which you can see the contents of your cart and submit the order form. Upon submission, you will be forwarded to a receipt page showing you your order details.
+If you click the cart link at the top right corner, you will be taken to a page in which you can see the contents of your cart and submit the order form. Upon submission, you will be forwarded to a receipt page showing you your order details. This order submission is done by means of a POST to the API. Lastly, PUT and DELETE call can be made from the order receipt page via "update quantity" and "cancel order" buttons.
 
-In addition, the last 5 products you have viewed are visible on the home page.
+In addition, the last 5 products you have viewed are visible on the home page. Also uses a GET call.
 
 Group memebrs:
 Keyvan Fatehi
 Kyle San Clemente
 
-Lastly, the github for this assignment is here: https://github.com/inf124grp08/pa3
+The github for this assignment is here: https://github.com/inf124grp08/pa4
 
 ## Requirements
 
