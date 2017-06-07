@@ -133,13 +133,16 @@ public class DataHelper {
     return products;
   }
 
-  public boolean submitOrder(HashMap<Integer,Integer> cart, HashMap<String, String> form) {
+  public boolean submitOrder(HashMap<String,String> cart, HashMap<String, String> form) {
+
+    System.out.println("DatHelper.submitOrder....");
 
     try {
       Connection conn = Database.getConnection();
 
-      for (int id : cart.keySet()) {
-        int qty = cart.get(id);
+      for (String idStr : cart.keySet()) {
+        int id = Integer.parseInt(idStr);
+        int qty = Integer.parseInt(cart.get(idStr));
         String sql = "INSERT INTO orders ( "
           +"product_id,"
           +"quantity,"
@@ -163,6 +166,7 @@ public class DataHelper {
         ps.setString(7, form.get("shipping"));
         ps.setString(8, form.get("creditcard"));
         ps.setString(9, form.get("expiry"));
+    System.out.println("DatHelper.submitOrder.... executing update");
 
         ps.executeUpdate();
         ps.close();
@@ -173,9 +177,11 @@ public class DataHelper {
       return true;
     }catch(SQLException se){
       //Handle errors for JDBC
+    System.out.println("DatHelper.submitOrder.... err one");
       se.printStackTrace();
     }catch(Exception e){
       //Handle errors for Class.forName
+    System.out.println("DatHelper.submitOrder.... err two");
       e.printStackTrace();
     }
 

@@ -11,6 +11,9 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
@@ -89,10 +92,17 @@ public class RestHelper {
     WebTarget target = client.target(getBaseURI()).
       path("v1").path("api").path("orders");
 
-    String input = "";
-    
+    Gson gson = new Gson();
+    JsonObject payload = new JsonObject();
+    HashMap<String,String> cartStr = new HashMap<String,String>();
+    for (Map.Entry<Integer,Integer> e : cart.entrySet()){
+      cartStr.put(Integer.toString(e.getKey()), Integer.toString(e.getValue()));
+    }
+    payload.add("cart", gson.toJsonTree(cartStr));
+    payload.add("form", gson.toJsonTree(form));
+
     Response response = target.
-      request("application/json").post(Entity.json(input));
+      request("application/json").post(Entity.json(payload.toString()));
     return response.getStatus() == 200;
   }
 }

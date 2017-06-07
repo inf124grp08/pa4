@@ -70,6 +70,7 @@ public class CheckoutServlet extends HttpServlet {
     HttpSession sesh = request.getSession(true);
     HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) sesh.getAttribute("cart");
 
+    System.out.println("submitting order thru datahelper...");
     if (dh.submitOrder(cart, form)) {
       request.setAttribute("lastCart", cart);
       sesh.removeAttribute("cart");

@@ -1,3 +1,7 @@
+all:
+	make api
+	make app
+
 api:
 	cd api && make build
 

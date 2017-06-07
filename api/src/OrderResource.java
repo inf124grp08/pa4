@@ -15,17 +15,25 @@ public class OrderResource {
     @POST
     @Produces( { MediaType.APPLICATION_JSON })
     @Consumes( { MediaType.APPLICATION_JSON })
-    public Response submitOrder( order) {
+    public Response submitOrder(String json) {
       DataHelper dh = new DataHelper();
-      boolean success = dh.submitOrder(
-          new HashMap<Integer,Integer>(order.get("cart")),
-          new HashMap<String,String>(order.get("form"))
-          );
-      if (products == null || products.isEmpty()){
-        return Response.status(Response.Status.NOT_FOUND).build();
+
+      System.out.println("PROVED GOT TO API....");
+
+      System.out.println(json);
+
+
+      Gson gson = new Gson();
+      Type type = new TypeToken<HashMap<String,HashMap<String,String>>>(){}.getType();
+      HashMap<String, HashMap<String,String>> map = gson.fromJson(json, type);
+      System.out.println(" NOW REALLY SUBMITTING ORDER LOL");
+
+      boolean success = dh.submitOrder(map.get("cart"), map.get("form"));
+
+      if (success){
+        return Response.ok().build();
       } else {
-        return Response.ok(products).build();
+        return Response.status(Response.Status.NOT_FOUND).build();
       }
-      return Response.status(Response.Status.NOT_FOUND).build();
     }
 }
